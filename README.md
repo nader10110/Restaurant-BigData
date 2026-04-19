@@ -1,21 +1,4 @@
 # 🍽️ Restaurant Sales Dashboard — Big Data Pipeline & Power BI Analytics
-
-<div align="center">
-
-![Dashboard Preview](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Databricks](https://img.shields.io/badge/Databricks-Data%20Processing-FF3621?style=for-the-badge&logo=databricks&logoColor=white)
-![Fivetran](https://img.shields.io/badge/Fivetran-ETL%20Pipeline-0073E6?style=for-the-badge&logo=fivetran&logoColor=white)
-![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-Cloud%20Deploy-742774?style=for-the-badge&logo=microsoft&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-Data%20Engineering-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
-
-**Transforming 11 Million rows of restaurant data into actionable business intelligence — in under 4 minutes.**
-
-[![🚀 Live Dashboard](https://img.shields.io/badge/🚀%20Live%20Dashboard-View%20on%20Microsoft%20Fabric-742774?style=for-the-badge&logo=microsoft&logoColor=white)](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)
-
-[📊 View Dashboard](#dashboard-pages) · [🏗️ Architecture](#architecture) · [📐 Data Model](#data-model) · [📈 Key Insights](#key-business-insights)
-
-</div>
-
 ---
 
 ## 📌 Project Overview
@@ -94,37 +77,8 @@ A restaurant chain with **6 branches** across Egypt needed a unified view of per
 
 > **DirectQuery mode** was chosen deliberately — it keeps the report lightweight while querying the full 11M row dataset live from Databricks without importing data into Power BI.
 
----
-
-## 📐 Data Model
 
 ```
-┌──────────────────────────────┐         ┌─────────────────────────────┐
-│       restaurant_final        │         │          Date_Table          │
-├──────────────────────────────┤         ├─────────────────────────────┤
-│ _fivetran_synced             │         │ Date (PK)                   │
-│ _line                        │         │ Day_NUM                     │
-│ branch                       │         │ Is_Weekend                  │
-│ category                     │  *───1  │ Month                       │
-│ customer_id                  │         │ Month_Name                  │
-│ discount                     │         │ Month_Num                   │
-│ hour                         │         │ Month_Year                  │
-│ is_weekend                   │         │ Quarter                     │
-│ item_name                    │         │ Weekday                     │
-│ order_date ──────────────────┼────────→│ Year                        │
-│ order_id                     │         └─────────────────────────────┘
-│ order_type                   │
-│ payment_method               │
-│ price                        │
-│ quantity                     │
-│ rating                       │
-│ total_amount                 │
-└──────────────────────────────┘
-```
-
-**Relationship:** `restaurant_final[order_date]` → `Date_Table[Date]` | Many-to-One | Single filter direction
-
----
 
 ## 📊 Dashboard Pages
 
@@ -236,32 +190,6 @@ A restaurant chain with **6 branches** across Egypt needed a unified view of per
 
 ---
 
-## 🗂️ Repository Structure
-
-```
-📁 restaurant-sales-dashboard/
-│
-├── 📁 data/
-│   ├── 📁 raw/                    # Original source files (CSV + JSON)
-│   └── 📁 processed/              # Merged & cleaned table from Databricks
-│
-├── 📁 databricks/
-│   └── 📄 merge_pipeline.sql      # SQL script to unify 9 files into 1 table
-│
-├── 📁 powerbi/
-│   └── 📄 restaurant_dashboard.pbix  # Power BI report file
-│
-├── 📁 measures/
-│   └── 📄 dax_measures.md         # All DAX measures with formulas & explanations
-│
-├── 📁 screenshots/
-│   ├── 🖼️ executive_overview.png
-│   ├── 🖼️ menu_performance.png
-│   ├── 🖼️ branch_analysis.png
-│   └── 🖼️ customer_quality.png
-│
-└── 📄 README.md
-```
 
 ---
 
@@ -412,96 +340,4 @@ Avg_Discount% = AVERAGE(restaurant_final[discount])
 ```
 
 </details>
-
----
-
-## 🛠️ How to Run This Project
-
-### ✅ Option 1 — View Live (No setup needed)
-
-Click the link below to open the fully deployed dashboard on Microsoft Fabric instantly:
-
-> 🔗 **[https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)**
-
-### 🖥️ Option 2 — Run Locally
-
-#### Prerequisites
-- Power BI Desktop (latest version)
-- Access to Databricks workspace *(or use the processed CSV in `/data/processed/`)*
-- Microsoft Fabric account *(for cloud deployment)*
-
-#### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/restaurant-sales-dashboard.git
-cd restaurant-sales-dashboard
-
-# 2. (Optional) Run the Databricks SQL pipeline
-# Open databricks/merge_pipeline.sql in your Databricks workspace
-# Execute to generate the unified restaurant_final table
-
-# 3. Open Power BI report
-# Open powerbi/restaurant_dashboard.pbix in Power BI Desktop
-
-# 4. Update data source connection
-# Home → Transform Data → Data Source Settings
-# Point to your Databricks endpoint OR the local processed CSV
-
-# 5. Refresh & explore
-# Click Refresh — all 4 dashboard pages will load
-```
-
----
-
-## 🧰 Tech Stack
-
-| Category | Technology |
-|----------|-----------|
-| **Data Ingestion** | Fivetran |
-| **Data Processing** | Databricks (Apache Spark + SQL) |
-| **Data Visualization** | Microsoft Power BI |
-| **Cloud Platform** | Microsoft Fabric |
-| **Query Mode** | DirectQuery (live connection) |
-| **Data Formats** | CSV, JSON |
-| **Modeling Language** | DAX (Data Analysis Expressions) |
-| **Scale** | ~11 Million rows |
-
----
-
-## 📊 Dashboard Screenshots
-
-| Page | Preview |
-|------|---------|
-| Executive Overview | Revenue 2.90bn · Orders 11M · YoY +19.9% |
-| Menu Performance | Top Item: كباب · 15 Items · Avg Rating 3.70 |
-| Branch Analysis | Cairo leads · Tanta most efficient · Assiut quality risk |
-| Customer & Quality | Peak Hour 8PM · AOV 261 · Revenue per unit 81.38 |
-
-> *Screenshots available in the `/screenshots/` folder*
-
-
----
-
-## 👤 Author
-
-**[Your Name]**
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/YOUR_PROFILE)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/YOUR_USERNAME)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**⭐ If this project helped you, please give it a star!**
-
-*Built with passion for data · Powered by modern data engineering*
-
 </div>
