@@ -21,15 +21,6 @@ This project presents a **full end-to-end Big Data pipeline and interactive Powe
 
 </div>
 
-| Page | What You'll See |
-|------|----------------|
-| **Executive Overview** | Revenue 2.90bn EGP · 11M Orders · YoY +19.9% · MoM Growth Chart |
-| **Menu Performance** | Top item كباب · Scatter analysis · Category Treemap |
-| **Branch Analysis** | Cairo leads · Tanta most efficient · Channel mix per branch |
-| **Customer & Quality** | Peak Hour 8PM · Weekday vs Weekend demand · Top 10 loyal customers |
-
-> 💡 **Tip:** Use the filter panel on the left side of the dashboard to slice by year, branch, or category — all 4 pages update simultaneously.
-
 ---
 
 ## 🎯 Business Problem
