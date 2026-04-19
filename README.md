@@ -19,8 +19,6 @@ This project presents a **full end-to-end Big Data pipeline and interactive Powe
 
 [![Live Dashboard](https://img.shields.io/badge/▶%20OPEN%20LIVE%20DASHBOARD-Microsoft%20Fabric-742774?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=1a1a2e)](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)
 
-🔗 `https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9`
-
 </div>
 
 | Page | What You'll See |
