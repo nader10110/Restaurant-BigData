@@ -20,18 +20,9 @@ This project presents a **full end-to-end Big Data pipeline and interactive Powe
 
 [![Live Dashboard](https://img.shields.io/badge/▶%20OPEN%20LIVE%20DASHBOARD-Microsoft%20Fabric-742774?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=1a1a2e)](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)
 
-🔗 `https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9`
 
 </div>
 
-| Page | What You'll See |
-|------|----------------|
-| **Executive Overview** | Revenue 2.90bn EGP · 11M Orders · YoY +19.9% · MoM Growth Chart |
-| **Menu Performance** | Top item كباب · Scatter analysis · Category Treemap |
-| **Branch Analysis** | Cairo leads · Tanta most efficient · Channel mix per branch |
-| **Customer & Quality** | Peak Hour 8PM · Weekday vs Weekend demand · Top 10 loyal customers |
-
-> 💡 **Tip:** Use the filter panel on the left side of the dashboard to slice by year, branch, or category — all 4 pages update simultaneously.
 
 ---
 
@@ -80,33 +71,10 @@ A restaurant chain with **6 branches** across Egypt needed a unified view of per
 
 ---
 
-## 📐 Data Model
 
 ```
-┌──────────────────────────────┐         ┌─────────────────────────────┐
-│       restaurant_final        │         │          Date_Table          │
-├──────────────────────────────┤         ├─────────────────────────────┤
-│ _fivetran_synced             │         │ Date (PK)                   │
-│ _line                        │         │ Day_NUM                     │
-│ branch                       │         │ Is_Weekend                  │
-│ category                     │  *───1  │ Month                       │
-│ customer_id                  │         │ Month_Name                  │
-│ discount                     │         │ Month_Num                   │
-│ hour                         │         │ Month_Year                  │
-│ is_weekend                   │         │ Quarter                     │
-│ item_name                    │         │ Weekday                     │
-│ order_date ──────────────────┼────────→│ Year                        │
-│ order_id                     │         └─────────────────────────────┘
-│ order_type                   │
-│ payment_method               │
-│ price                        │
-│ quantity                     │
-│ rating                       │
-│ total_amount                 │
-└──────────────────────────────┘
-```
 
-**Relationship:** `restaurant_final[order_date]` → `Date_Table[Date]` | Many-to-One | Single filter direction
+
 
 ---
 
@@ -220,32 +188,7 @@ A restaurant chain with **6 branches** across Egypt needed a unified view of per
 
 ---
 
-## 🗂️ Repository Structure
 
-```
-📁 restaurant-sales-dashboard/
-│
-├── 📁 data/
-│   ├── 📁 raw/                    # Original source files (CSV + JSON)
-│   └── 📁 processed/              # Merged & cleaned table from Databricks
-│
-├── 📁 databricks/
-│   └── 📄 merge_pipeline.sql      # SQL script to unify 9 files into 1 table
-│
-├── 📁 powerbi/
-│   └── 📄 restaurant_dashboard.pbix  # Power BI report file
-│
-├── 📁 measures/
-│   └── 📄 dax_measures.md         # All DAX measures with formulas & explanations
-│
-├── 📁 screenshots/
-│   ├── 🖼️ executive_overview.png
-│   ├── 🖼️ menu_performance.png
-│   ├── 🖼️ branch_analysis.png
-│   └── 🖼️ customer_quality.png
-│
-└── 📄 README.md
-```
 
 ---
 
@@ -399,103 +342,29 @@ Avg_Discount% = AVERAGE(restaurant_final[discount])
 
 ---
 
-## 🛠️ How to Run This Project
 
-### ✅ Option 1 — View Live (No setup needed)
-
-Click the link below to open the fully deployed dashboard on Microsoft Fabric instantly:
-
-> 🔗 **[https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)**
-
-### 🖥️ Option 2 — Run Locally
-
-#### Prerequisites
-- Power BI Desktop (latest version)
-- Access to Databricks workspace *(or use the processed CSV in `/data/processed/`)*
-- Microsoft Fabric account *(for cloud deployment)*
-
-#### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/restaurant-sales-dashboard.git
-cd restaurant-sales-dashboard
-
-# 2. (Optional) Run the Databricks SQL pipeline
-# Open databricks/merge_pipeline.sql in your Databricks workspace
-# Execute to generate the unified restaurant_final table
-
-# 3. Open Power BI report
-# Open powerbi/restaurant_dashboard.pbix in Power BI Desktop
-
-# 4. Update data source connection
-# Home → Transform Data → Data Source Settings
-# Point to your Databricks endpoint OR the local processed CSV
-
-# 5. Refresh & explore
-# Click Refresh — all 4 dashboard pages will load
-```
 
 ---
 
-## 🧰 Tech Stack
 
-| Category | Technology |
-|----------|-----------|
-| **Data Ingestion** | Fivetran |
-| **Data Processing** | Databricks (Apache Spark + SQL) |
-| **Data Visualization** | Microsoft Power BI |
-| **Cloud Platform** | Microsoft Fabric |
-| **Query Mode** | DirectQuery (live connection) |
-| **Data Formats** | CSV, JSON |
-| **Modeling Language** | DAX (Data Analysis Expressions) |
-| **Scale** | ~11 Million rows |
 
 ---
 
-## 📊 Dashboard Screenshots
-
-| Page | Preview |
-|------|---------|
-| Executive Overview | Revenue 2.90bn · Orders 11M · YoY +19.9% |
-| Menu Performance | Top Item: كباب · 15 Items · Avg Rating 3.70 |
-| Branch Analysis | Cairo leads · Tanta most efficient · Assiut quality risk |
-| Customer & Quality | Peak Hour 8PM · AOV 261 · Revenue per unit 81.38 |
-
-> *Screenshots available in the `/screenshots/` folder*
 
 ---
 
-## 🔮 Future Enhancements
-
-- [ ] **RFM Customer Segmentation** — Classify customers by Recency, Frequency, Monetary value
-- [ ] **Predictive Revenue Forecasting** — Time series model using Prophet or ARIMA
-- [ ] **Real-time Streaming** — Integrate Kafka for live order ingestion
-- [ ] **Branch Profitability Model** — Add cost data to calculate net margin per branch
-- [ ] **Automated Alerts** — Power BI Data Alerts when rating drops below 3.5 during peak hours
-- [ ] **Mobile-Optimized Report** — Power BI Mobile layout for on-the-go managers
 
 ---
 
-## 👤 Author
 
-**[Your Name]**
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/YOUR_PROFILE)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/YOUR_USERNAME)
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<div align="center">
 
-**⭐ If this project helped you, please give it a star!**
 
-*Built with passion for data · Powered by modern data engineering*
+
 
 </div>
