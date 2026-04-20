@@ -1,21 +1,5 @@
 # 🍽️ Restaurant Sales Dashboard — Big Data Pipeline & Power BI Analytics
 
-<div align="center">
-
-![Dashboard Preview](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Databricks](https://img.shields.io/badge/Databricks-Data%20Processing-FF3621?style=for-the-badge&logo=databricks&logoColor=white)
-![Fivetran](https://img.shields.io/badge/Fivetran-ETL%20Pipeline-0073E6?style=for-the-badge&logo=fivetran&logoColor=white)
-![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-Cloud%20Deploy-742774?style=for-the-badge&logo=microsoft&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-Data%20Engineering-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
-
-**Transforming 11 Million rows of restaurant data into actionable business intelligence — in under 4 minutes.**
-
-[![🚀 Live Dashboard](https://img.shields.io/badge/🚀%20Live%20Dashboard-View%20on%20Microsoft%20Fabric-742774?style=for-the-badge&logo=microsoft&logoColor=white)](https://app.fabric.microsoft.com/view?r=eyJrIjoiMGQ0YmUyMmQtMGViNS00ZWI3LWIzMGUtN2U0MzA0NjdlZGIyIiwidCI6IjJiYjZlNWJjLWMxMDktNDdmYi05NDMzLWMxYzZmNGZhMzNmZiIsImMiOjl9)
-
-[📊 View Dashboard](#dashboard-pages) · [🏗️ Architecture](#architecture) · [📐 Data Model](#data-model) · [📈 Key Insights](#key-business-insights)
-
-</div>
-
 ---
 
 ## 📌 Project Overview
