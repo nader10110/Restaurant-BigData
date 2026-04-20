@@ -349,15 +349,7 @@ Avg_Discount% = AVERAGE(restaurant_final[discount])
 | **Modeling Language** | DAX (Data Analysis Expressions) |
 | **Scale** | ~11 Million rows |
 
----
 
----
-
-
----
-
-
----
 
 <div align="center">
 
