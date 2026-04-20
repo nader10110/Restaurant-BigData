@@ -351,36 +351,15 @@ Avg_Discount% = AVERAGE(restaurant_final[discount])
 
 ---
 
-## 🔮 Future Enhancements
+---
 
-- [ ] **RFM Customer Segmentation** — Classify customers by Recency, Frequency, Monetary value
-- [ ] **Predictive Revenue Forecasting** — Time series model using Prophet or ARIMA
-- [ ] **Real-time Streaming** — Integrate Kafka for live order ingestion
-- [ ] **Branch Profitability Model** — Add cost data to calculate net margin per branch
-- [ ] **Automated Alerts** — Power BI Data Alerts when rating drops below 3.5 during peak hours
-- [ ] **Mobile-Optimized Report** — Power BI Mobile layout for on-the-go managers
 
 ---
 
-## 👤 Author
-
-**[Your Name]**
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/YOUR_PROFILE)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/YOUR_USERNAME)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-**⭐ If this project helped you, please give it a star!**
-
-*Built with passion for data · Powered by modern data engineering*
 
 </div>
